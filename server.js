@@ -13,6 +13,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+app.get("/notes", (req, res) =>
+  res.sendFile(path.join(__dirname, "public", "notes.html"))
+);
+
 // GET /notes should return the notes.html file
 // GET * should return the index.html file.
 // GET /api/notes should read the db.json file and return all saved notes as JSON.
