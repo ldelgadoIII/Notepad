@@ -33,12 +33,12 @@ app.get("/api/notes", (req, res) => res.json(db));
 // POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 app.post("/api/notes", (req, res) => {
   const newNote = req.body;
+
+  db.push(newNote);
+  res.json(newNote);
 });
 
 // find a way to give each note a unique id when it's saved
-
-// app.get("*", (req, res) => {
-//   res.send("Charlie is the cooliest");
-// });
+//
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
