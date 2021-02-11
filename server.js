@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.use(express.static("public"));
 
 // GET /notes should return the notes.html file
 // GET * should return the index.html file.
@@ -22,5 +22,6 @@ app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 // app.get("*", (req, res) => {
 //   res.send("Charlie is the cooliest");
 // });
+// app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
