@@ -18,16 +18,6 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// return the notes.html file
-app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
-);
-
-// return the index.html file.
-app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
-);
-
 // read the db.json file and return all saved notes as JSON.
 app.get("/api/notes", (req, res) => res.json(db));
 
@@ -41,5 +31,15 @@ app.post("/api/notes", (req, res) => {
   db.push(newNote);
   res.json(newNote);
 });
+
+// return the notes.html file
+app.get("/notes", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
+);
+
+// return the index.html file.
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/index.html"))
+);
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
